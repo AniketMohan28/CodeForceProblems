@@ -1,0 +1,44 @@
+/*
+Problem Statement
+You are given an integer x. Your task is to find any integer y (where 1 ≤ y < x) such that the expression gcd(x, y) + y is maximized.
+
+Note: If there are multiple values of y that satisfy the condition, you may return any of them.
+
+Definition:
+
+gcd(a, b) is the Greatest Common Divisor of a and b. For example, gcd(6, 4) = 2.
+Input
+The first line contains a single integer t (1 ≤ t ≤ 1000) — the number of test cases.
+Each of the following t lines contains a single integer x (2 ≤ x ≤ 1000).
+Output
+For each test case, output any integer y (1 ≤ y < x) that maximizes gcd(x, y) + y.
+*/
+
+//Solution :
+
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int t;
+    cin>>t;
+    while (t--)
+    {
+        int n;
+        cin>>n;
+        int y=1;
+        int ans=__gcd(n,y)+y;
+        int res=1;
+        for (int y = 2; y <n; ++y) 
+        {
+            int b = __gcd(n, y)+y;
+            if (b > ans) 
+            {
+                ans = b;
+                res=y;
+            }
+        }
+        cout<<res<<endl;
+        
+    }
+}
