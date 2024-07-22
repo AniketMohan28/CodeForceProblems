@@ -1,0 +1,78 @@
+/*
+Problem Description
+
+Given an array a of integers a_1, a_2, ..., a_n, you can perform two types of operations in any order:
+
+Removal: Choose an element from the array and remove it. The array length decreases by 1.
+Increment: Choose an element from the array and increase its value by 1.
+Your objective is to find the minimum number of moves required to make the sum of the elements in a divisible by 3. You can perform any number of moves, including zero if the initial sum is already divisible by 3.
+
+Note: The sum of an empty array is considered 0.
+
+Input
+
+The first line contains a single integer t (1 ≤ t ≤ 10^4), representing the number of test cases.
+Each test case has two lines:
+The first line contains an integer n (1 ≤ n ≤ 10^5), denoting the size of the array a.
+The second line consists of n space-separated integers a_1, a_2, ..., a_n (1 ≤ a_i ≤ 10^4), representing the elements of the array a.
+The sum of n across all test cases does not exceed 2 × 10^5.
+Output
+
+For each test case, print a single integer on a new line, indicating the minimum number of moves required to make the sum of a divisible by 3.
+*/
+
+//Code :
+
+#include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    int t;
+    cin>>t;
+    while (t--)
+    {
+        int n;
+        cin>>n;
+        int i,j,sum=0;
+        bool found=false;
+        vector<int> v(n);
+        for(i=0;i<n;i++)
+        {
+            cin>>v[i];
+            sum+=v[i];
+        }
+        if(sum%3==0)
+        {
+            cout<<0<<endl;
+        }
+        else if(sum%3==2)
+        {
+            cout<<1<<endl;
+        }
+        else if(sum%3==1)
+        {
+            sort(v.begin(),v.end());
+            
+            for(i=0;i<n;i++)
+            {
+                if(v[i]%3==1)
+                {
+                    found=true;
+                    break;
+                }
+            }
+            if(found==true)
+            {
+                cout<<1<<endl;
+            }
+            else
+            {
+                cout<<2<<endl;
+            }
+            
+        }
+    }
+    return 0;
+    
+}
