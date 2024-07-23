@@ -1,0 +1,61 @@
+/*
+codeForce Problem : 1811A - Insert Digit (link : https://codeforces.com/contest/1811/problem/A )
+Title: Maximize Number by Inserting Digit
+
+Description:
+
+This code solves the problem of maximizing a positive integer by inserting an additional digit anywhere within it.
+
+Input:
+
+The first line contains a single integer t (1 ≤ t ≤ 10^4), representing the number of test cases.
+Each test case consists of two lines:
+The first line contains two space-separated integers n (1 ≤ n ≤ 2 * 10^5) and d (0 ≤ d ≤ 9), where n is the length of the number and d is the additional digit.
+The second line contains a string of length n representing the initial positive integer (no leading zeros).
+The total sum of n across all test cases won't exceed 2 * 10^5.
+Output:
+
+For each test case, print a string of length n + 1 representing the maximum number obtainable by inserting the digit d into the initial number.
+
+Time Limit: 2 seconds per test case
+
+Memory Limit: 256 MB per test case
+*/
+
+//Code :
+
+#include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    int t;
+    cin>>t;
+    while (t--)
+    {
+        int m,d;
+        cin>>m>>d;
+        string s;
+        cin>>s;
+        char ch='0' + d;
+        int k=-1,i,j=0;
+        string st;
+        bool inserted =false;
+        for(i=0;i<m;i++)
+        {
+            if(!inserted && s[i]<ch)
+            {
+                st.push_back(ch);
+                inserted = true;
+            }
+            st.push_back(s[i]);
+        }
+        if(inserted==false)
+        {
+            st.push_back(ch);
+        }
+        cout<<st<<endl;
+    }
+    return 0;
+}
+
