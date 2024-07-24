@@ -1,0 +1,42 @@
+/* 
+  Title: B. Squares and Cubes
+
+Description:
+
+Polycarp has a fascination with perfect squares and cubes of positive integers. He enjoys building a sequence of numbers that includes these special values. The sequence starts with:
+
+1, 4, 8, 9, ...
+In this sequence, 1 is a perfect square (1 * 1), 4 is a perfect square (2 * 2), 8 is a perfect cube (2 * 2 * 2), and 9 is both a perfect square (3 * 3) and a perfect cube (1 * 1 * 1).
+
+Your challenge is to write a program that helps Polycarp count the number of integers he likes within a given range. Specifically, given an integer n, you need to determine the number of integers from 1 to n (inclusive) that are either perfect squares, perfect cubes, or both.
+
+Input:
+
+The first line contains a single integer t (1 ≤ t ≤ 20), representing the number of test cases.
+Each of the following t lines contains an integer n (1 ≤ n ≤ 10^9), representing the upper limit for a test case.
+Output:
+
+For each test case, print a single line containing the number of integers from 1 to n that Polycarp likes (i.e., perfect squares, perfect cubes, or both).
+*/
+
+#include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    int t;
+    cin>>t;
+    while (t--)
+    {
+        long long n;
+        cin>>n;
+       
+            long long NoOfSqrt=sqrt(n);
+            long long NoOfCbrt=cbrt(n);
+            long long NoOfBothSqrtCbrt=sqrt(cbrt(n));
+       
+        cout<<NoOfSqrt+NoOfCbrt-NoOfBothSqrtCbrt<<endl;
+         
+    }
+    return 0;
+}
