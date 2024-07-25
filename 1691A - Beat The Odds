@@ -1,0 +1,50 @@
+/*
+A. Beat The Odds
+
+Problem Statement
+Given a sequence of numbers, find the minimum number of elements to remove such that the sum of every consecutive pair of elements is even.
+
+Input
+The first line contains an integer t (1 ≤ t ≤ 100), representing the number of test cases.
+
+Each test case starts with an integer n (3 ≤ n ≤ 10^5), representing the length of the sequence.
+
+The next line contains n integers a1, a2, ..., an (1 ≤ ai ≤ 10^9), representing the elements of the sequence.
+
+Output
+For each test case, print a single integer: the minimum number of elements to remove.
+
+*/
+
+#include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    int t;
+    cin>>t;
+    while (t--)
+    {
+        int n;
+        cin>>n;
+        int i,j,Ecount=0,Ocount=0;
+        bool found=false;
+        vector<int> v(n);
+        for(i=0;i<n;i++)
+        {
+            cin>>v[i];
+            if(v[i]%2==0)
+            {
+                Ecount++;
+            }
+            else
+            {
+                Ocount++;
+            }
+            
+        }
+        
+        cout<<min(Ocount,Ecount)<<endl;
+    }
+    return 0;
+}
