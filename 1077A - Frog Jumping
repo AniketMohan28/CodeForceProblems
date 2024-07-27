@@ -1,0 +1,52 @@
+/*
+**A. Frog Jumping**
+
+**Time limit per test:** 1 second
+**Memory limit per test:** 256 megabytes
+
+A frog starts at position 0 on a number line. It jumps according to the following pattern:
+* Jump 1: `a` units to the right
+* Jump 2: `b` units to the left
+* Jump 3: `a` units to the right
+* Jump 4: `b` units to the left
+* ... and so on
+
+**Task:**
+Calculate the frog's position after `k` jumps.
+
+**Input:**
+* The first line contains an integer `t` (1 ≤ `t` ≤ 1000), the number of test cases.
+* Each of the next `t` lines contains three space-separated integers `a`, `b`, `k` (1 ≤ `a`, `b`, `k` ≤ 10^9), representing the jump lengths and the number of jumps for a single test case.
+
+**Output:**
+For each test case, print a single integer: the final position of the frog.
+*/
+
+#include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    int t;
+    cin>>t;
+    while (t--)
+    {
+        long long a,b,k;
+        cin>>a>>b>>k;
+        long long ans=0;
+        if(k%2==0)
+        {
+            long long c=a*(k/2);
+            long long d=b*(k/2);
+            ans=c-d;
+        }
+        else if(k%2!=0)
+        {
+            long long c=a*((k/2)+1);
+            long long d=b*(k/2);
+            ans=c-d;
+        }
+        cout<<ans<<endl;
+    }
+    return 0;
+}
