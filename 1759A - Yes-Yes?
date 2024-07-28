@@ -1,0 +1,74 @@
+/*
+A. Yes-Yes?
+
+Problem Statement
+You overheard a part of Polycarp's answer to a question, which was a repetition of the word "Yes". Given the overheard part, determine if it's a substring of "YesYesYes...".
+
+Input
+An integer t (1 ≤ t ≤ 1000) representing the number of test cases.
+For each test case:
+A string s (1 ≤ |s| ≤ 50) consisting of lowercase Latin letters, representing the overheard part.
+
+Output
+For each test case, output "YES" if s is a substring of "YesYesYes...", otherwise output "NO".
+*/
+
+#include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    int t;
+    cin>>t;
+    while (t--)
+    {
+        string s;
+        cin>>s;
+        int i,j;
+        bool flag=true;
+        
+                for(i=0;i<s.length();i++)
+                {
+                     if(s[i]=='Y')
+                    {
+                        if(i+1 < s.length() && s[i+1]!='e')
+                        {
+                            flag=false;
+                            break;
+                        }
+                    }
+                    else if(s[i]=='e')
+                    {
+                        if(i+1 < s.length() && s[i+1]!='s')
+                        {
+                            flag=false;
+                            break;
+                        }
+                    }
+                    else if(s[i]=='s')
+                    {
+                        if(i+1 < s.length() && s[i+1]!='Y')
+                        {
+                            flag=false;
+                            break;
+                        }
+                    }
+                    else 
+                     {
+                      flag = false;
+                      break;
+                    }
+                }
+      
+      
+            if(flag==false)
+            {
+                cout<<"NO"<<endl;
+            }
+            else
+            {
+                cout<<"YES"<<endl;
+            }
+    }
+    return 0;
+}
