@@ -1,0 +1,63 @@
+/*
+
+A. Two Elevators
+================
+**Time Limit:** 1 second per test  
+**Memory Limit:** 256 megabytes  
+
+Vlad is on the 1st floor of his apartment building and wants to call an elevator to go up to his apartment.
+
+There are two elevators in his building:
+
+1. The first elevator is currently on floor `a` (it is stationary).
+2. The second elevator is located on floor `b` and is moving to floor `c` (where `b ≠ c`).
+
+- If `b = 1`, the second elevator is already leaving the 1st floor, so Vlad cannot enter it in time.
+- If Vlad calls the first elevator, it will immediately start moving to the 1st floor.
+- If Vlad calls the second elevator, it will first go to floor `c` and then move to the 1st floor.
+- It takes |x − y| seconds for an elevator to move from floor `x` to floor `y`.
+
+**Objective:**  
+Help Vlad choose the elevator that will arrive faster.
+
+### Input
+- The first line contains the integer `t` (1 ≤ t ≤ 10^4) — the number of test cases.
+- The next `t` lines contain three integers each: `a`, `b`, and `c` (1 ≤ a, b, c ≤ 10^8, b ≠ c) — the floor numbers described above.
+
+### Output
+- For each test case, output:
+  1. `1`, if the first elevator will arrive faster;
+  2. `2`, if the second elevator will arrive faster;
+  3. `3`, if both elevators will arrive at the same time.
+
+*/
+
+
+#include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    int t;
+    cin>>t;
+    while (t--)
+    {
+        int a,b,c,sum=0;
+        cin>>a>>b>>c;
+        int d=abs(b-c)+abs(c-1);
+        int e=abs(a-1);
+        if(e<d)
+        {
+            cout<<1<<endl;
+        }
+        else if(e>d)
+        {
+            cout<<2<<endl;
+        }
+        else if(e==d)
+        {
+            cout<<3<<endl;
+        }
+    }
+    return 0;
+}
