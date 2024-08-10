@@ -1,0 +1,34 @@
+/*
+Problem: The Number of Positions
+Problem Statement:
+
+Petr stands in a line of n people, but he isn't sure about his exact position. However, he knows that there are at least a people standing in front of him and at most b people standing behind him. Your task is to determine the number of possible positions Petr could occupy in the line.
+
+Input:
+
+The input consists of a single line containing three integers: n, a, and b where 0 ≤ a, b < n ≤ 100.
+Output:
+
+Print a single integer representing the number of possible positions Petr could occupy in the line.
+*/
+
+#include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    
+        int n,a,b,c,ans;
+        cin>>n>>a>>b;
+        c=n-a-1;
+        if(c>b)
+        {
+            ans=b+1;
+        }
+        else
+        {
+            ans=c+1;
+        }
+   cout<<ans<<endl;
+    return 0;
+}
