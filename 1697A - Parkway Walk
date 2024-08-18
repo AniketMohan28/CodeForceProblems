@@ -1,0 +1,59 @@
+## A. Parkway Walk
+
+**Time Limit:** 1 second  
+**Memory Limit:** 256 megabytes  
+
+### Problem Statement
+You are walking through a parkway near your house. The parkway has `n+1` benches in a row numbered from `1` to `n+1` from left to right. The distance between bench `i` and bench `i+1` is `a_i` meters.
+
+Initially, you have `m` units of energy. To walk 1 meter of distance, you spend 1 unit of energy. You can't walk if you have no energy left. The only way to restore your energy is by sitting on benches. While sitting, you can restore any integer amount of energy you want, and the amount of your energy can exceed `m`.
+
+Your task is to find the minimum amount of energy you have to restore (by sitting on benches) to reach the last bench `n+1` from the first bench `1` (and end your walk).
+
+You need to answer `t` independent test cases.
+
+### Input
+- The first line of the input contains one integer `t` (1 ≤ t ≤ 100) — the number of test cases.
+- The first line of each test case contains two integers `n` and `m` (1 ≤ n ≤ 100; 1 ≤ m ≤ 10^4).
+- The second line of each test case contains `n` integers `a_1, a_2, ..., a_n` (1 ≤ a_i ≤ 100), where `a_i` is the distance between bench `i` and bench `i+1`.
+
+### Output
+For each test case, print one integer — the minimum amount of energy you have to restore (by sitting on benches) to reach the last bench `n+1` from the first bench `1` in the corresponding test case.
+
+
+
+
+
+#include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int n,m;
+        cin>>n>>m;
+        int i,j,sum=0;
+        
+        vector<int>v(n);
+        for(i=0;i<n;i++)
+        {
+            cin>>v[i];
+            sum+=v[i];
+        }
+        if(sum<=m)
+        {
+            cout<<0<<endl;
+        }
+        else if(sum>m)
+        {
+            cout<<sum-m<<endl;
+        }
+
+
+    }
+    return 0;
+     
+}
