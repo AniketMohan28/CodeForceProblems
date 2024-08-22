@@ -1,0 +1,86 @@
+/*
+# Problem: A. Diverse Team
+
+**Time Limit:** 1 second per test  
+**Memory Limit:** 256 megabytes  
+
+You are given `n` students in a school class, where the rating of the `i`-th student on Codehorses is `a[i]`. Your task is to form a team consisting of `k` students (`1 ≤ k ≤ n`) such that the ratings of all team members are distinct.
+
+## Output
+- If it is impossible to form such a team, print `"NO"`.
+- Otherwise, print `"YES"`, followed by `k` distinct integers representing the indices of the selected students. The ratings of these students must be distinct. If there are multiple valid answers, you may print any of them.
+
+## Input
+- The first line contains two integers `n` and `k` (`1 ≤ k ≤ n ≤ 100`) — the number of students and the size of the team.
+- The second line contains `n` integers `a[1], a[2], ..., a[n]` (`1 ≤ a[i] ≤ 100`), where `a[i]` is the rating of the `i`-th student.
+
+## Output
+- Print `"NO"` if it is impossible to form the required team.
+- Otherwise, print `"YES"`, followed by `k` distinct indices of the students in the team. The indices can be in any order.
+
+## Examples
+
+### Example 1:
+**Input:**
+5 3
+15 13 15 15 12
+**Output:**
+YES
+1 2 5
+### Example 2:
+**Input:**
+5 4
+15 13 15 15 12
+**Output:**
+NO
+*/
+
+#include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+     int n,k;
+        cin>>n>>k;
+        int i,j,sum=0;
+        
+        vector<int>v(n),ans;
+        for(i=0;i<n;i++)
+        {
+            cin>>v[i];
+            
+        }
+        for(i=0;i<n;i++)
+        {
+            
+            for(j=i+1;j<n;j++)
+            {
+                if(v[i]==v[j])
+                {
+                    v[j]=-1;
+                }
+            }
+        }
+        for(i=0;i<n;i++)
+        {
+            if(v[i]!=-1)
+            {
+                ans.push_back(i+1);
+            }
+        }
+        if(ans.size()>=k)
+        {
+            cout<<"YES"<<endl;
+            for(i=0;i<k;i++)
+            {
+                cout<<ans[i]<<" ";
+            }
+            cout<<endl;
+        }
+        else
+        {
+            cout<<"NO"<<endl;
+        }
+    
+    return 0;
+}
