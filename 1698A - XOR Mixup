@@ -1,0 +1,106 @@
+## A. XOR Mixup
+
+**Time limit per test:** 1 second  
+**Memory limit per test:** 256 megabytes
+
+### Problem Statement
+
+You are given an array `a` with `n` integers. The array was originally formed by starting with an array of `n-1` integers, computing the bitwise XOR of all elements of this initial array to get a number `x`, adding `x` to the end of the array, and then shuffling the elements. 
+
+You are given the newly formed array `a`. Your task is to determine the value of `x`. If there are multiple possible values of `x`, you may output any of them.
+
+### Input
+
+- The first line contains an integer `t` (`1 ≤ t ≤ 1000`) — the number of test cases.
+- For each test case:
+  - The first line contains an integer `n` (`2 ≤ n ≤ 100`) — the number of integers in the resulting array `a`.
+  - The second line contains `n` integers `a1, a2, ..., an` (`0 ≤ ai ≤ 127`) — the elements of the newly formed array `a`.
+
+**Note:** The array `a` is made by the process described in the statement, meaning that a valid value of `x` always exists.
+
+### Output
+
+For each test case, output a single integer — the value of `x`, as described in the statement. If there are multiple possible values of `x`, output any of them.
+
+### Example
+
+#### Input
+
+
+Method 01: TC=O(n^2)  =>
+
+#include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int n;
+        cin>>n;
+        int i,j,sum=0;
+        vector<int>v(n);
+        for(i=0;i<n;i++)
+        {
+            cin>>v[i];
+        }
+        int ans=0,res=-1;
+        for(i=0;i<n;i++)
+        {
+            for(j=0;j<n;j++)
+            {
+                if(i!=j)
+                {
+                    ans^=v[j];
+                }
+            }
+            if(ans==v[i])
+            {
+                res=v[i];
+                break;
+            }
+        }
+        cout<<res<<endl;
+    }
+    return 0;
+}
+
+
+
+Method 02: TC=O(n)  =>
+
+#include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int n;
+        cin>>n;
+        int i,j,sum=0,TotalXOR=0;
+        vector<int>v(n);
+        for(i=0;i<n;i++)
+        {
+            cin>>v[i];
+            TotalXOR^=v[i];
+        }
+        int res=-1;
+        for(i=0;i<n;i++)
+        {
+            TotalXOR^=v[i];
+            if(TotalXOR==v[i])
+            {
+                res=v[i];
+                break;
+            }
+        }
+        cout<<res<<endl;
+    }
+    return 0;
+}
+ 
