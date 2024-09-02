@@ -1,0 +1,82 @@
+/*
+A. Unit Array
+Time Limit: 1 second
+Memory Limit: 256 megabytes
+
+Problem Statement
+Given an array a of length n, where the elements are either -1 or 1, we define the array a as good if the following conditions are met simultaneously:
+
+The sum of all elements in a is non-negative, i.e., a1 + a2 + ... + an ≥ 0.
+The product of all elements in a is exactly 1, i.e., a1 * a2 * ... * an = 1.
+You are allowed to perform operations where you can select any arbitrary element ai and change its value to the opposite. In other words, if ai = -1, you can change it to ai = 1, and if ai = 1, you can change it to ai = -1.
+
+Your task is to determine the minimum number of operations required to make the array a good. It is guaranteed that it is always possible to make the array good.
+
+Input
+The first line contains a single integer t (1 ≤ t ≤ 500) — the number of test cases.
+Each test case consists of two lines:
+The first line contains a single integer n (1 ≤ n ≤ 100) — the length of the array a.
+The second line contains n integers a1, a2, ..., an (ai = ±1) — the elements of the array a.
+Output
+For each test case, output a single integer — the minimum number of operations needed to make the array a good.
+*/
+
+
+
+#include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int n;
+        cin>>n;
+        int i,j,sum=0,count=0,countN=0,countP=0;
+        vector<int>v(n);
+        for(i=0;i<n;i++)
+        {
+            cin>>v[i];
+            if(v[i]==-1)
+            {
+                countN++;
+            }
+            else
+            {
+                countP++;
+            }
+            sum+=v[i];
+        }
+        sort(v.begin(),v.end());
+        if(sum>=0 && countN%2==0)
+        {
+            cout<<0<<endl;
+        }
+        else
+        {
+            count=0;
+            for(auto a:v)
+            {
+				sum -= a;
+				sum += (-a);
+				
+				--countN;
+				++countP;
+				++count;
+				
+				if(sum >= 0 && (countN % 2 == 0))
+                {
+					break;
+				}
+			}
+			cout << count <<endl;
+
+        }
+        
+
+
+    }
+    return 0;
+}
