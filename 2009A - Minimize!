@@ -1,0 +1,51 @@
+/*
+Problem: A. Minimize!
+Time Limit: 1 second
+Memory Limit: 256 MB
+
+Problem Statement
+You are given two integers a and b (a ≤ b). Your task is to find the minimum value of the expression (c−a) + (b−c) for all possible integer values of c such that a ≤ c ≤ b.
+
+Input
+The first line contains an integer t (1 ≤ t ≤ 55) — the number of test cases.
+Each test case consists of two integers a and b (1 ≤ a ≤ b ≤ 10).
+Output
+For each test case, output the minimum possible value of the expression (c−a) + (b−c) on a new line.
+*/
+
+
+
+#include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int a,b;
+        cin>>a>>b;
+        int i,j,ans=-1;
+        int mini=INT_MAX;
+        for(i=a;i<=b;i++)
+        {
+            int k=(i-a)+(b-i);
+            if(k<mini)
+            {
+                mini=k;
+                ans=i;
+            }
+        }
+        if(a==b)
+        {
+            cout<<0<<endl;
+        }
+        else
+        {
+            cout<<mini<<endl;
+        }
+        
+    }
+    return 0;
+}
