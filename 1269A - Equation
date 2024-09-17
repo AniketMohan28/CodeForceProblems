@@ -1,0 +1,73 @@
+/*
+    A. Equation
+    Time limit per test: 3 seconds
+    Memory limit per test: 256 megabytes
+
+    Problem:
+    Let's call a positive integer composite if it has at least one divisor other than 1 and itself. 
+    For example:
+    - The following numbers are composite: 1024, 4, 6, 9;
+    - The following numbers are not composite: 13, 1, 2, 3, 37.
+
+    You are given a positive integer n. Find two composite integers a, b such that a - b = n.
+
+    It can be proven that a solution always exists.
+
+    Input:
+    - The input contains one integer n (1 ≤ n ≤ 10^7): the given integer.
+
+    Output:
+    - Print two composite integers a and b (2 ≤ a, b ≤ 10^9, a - b = n).
+    - If there are several possible solutions, you can print any.
+
+    Example:
+    Input:
+    512
+    Output:
+    516 4
+*/
+
+
+
+#include<bits/stdc++.h>
+using namespace std;
+
+bool is_composite(int num) 
+{
+    if (num < 4) return false;  
+    for (int i = 2; i <= sqrt(num); i++)
+    {
+        if (num % i == 0) 
+        {
+            return true; 
+        }
+    }
+    return false;
+}
+
+void find_composites(int n) 
+{
+    int b = 4;  
+    int a = b + n;
+
+  
+    while (!is_composite(a) || !is_composite(b)) 
+    {  
+        b += 1;  
+        a = b + n; 
+    }
+
+    
+    cout << a << " " << b << endl;
+}
+
+
+
+int main()
+{
+    int n;
+    cin>>n;
+    find_composites(n);  
+    return 0;
+    
+}
