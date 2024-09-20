@@ -1,0 +1,64 @@
+
+**Problem: A. Distinct Digits**
+
+**Time limit**: 1 second  
+**Memory limit**: 256 megabytes
+
+You are given two integers `l` and `r`. Your task is to find an integer `x` that satisfies the following conditions:
+- `l ≤ x ≤ r`
+- All digits of `x` are distinct.
+
+If there are multiple answers, print any of them.
+
+### Input:
+The first line contains two integers `l` and `r` (1 ≤ l ≤ r ≤ 10^5).
+
+### Output:
+- If an answer exists, print any integer `x` such that `l ≤ x ≤ r` and all digits of `x` are different.
+- If no such integer exists, print `-1`.
+
+### Example:
+
+#### Input 1:
+
+
+
+
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int l,r;
+    cin>>l>>r;
+    int ans=-1;
+    for(int i=l;i<=r;i++)
+    {
+        int temp=i;
+        map<int,int>m;
+        int count=0;
+        bool flag=false;
+        
+        while (temp>0)
+        {
+            int a=temp%10;
+            m[a]++;
+            temp/=10;
+        }
+        for(auto &a:m)
+        {
+            if(a.second==1)
+            {
+                count++;
+            }
+        }
+        if(count==m.size())
+        {
+            flag=true;
+            ans=i;
+            break;
+        }
+        
+    }
+    cout<<ans<<endl;
+    return 0;
+}
